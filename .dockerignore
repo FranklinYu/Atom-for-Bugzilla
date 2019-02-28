@@ -1,4 +1,5 @@
 .bundle/
 .git/
+.dockerignore
 Dockerfile
 *.markdown

@@ -34,8 +34,12 @@ def atom_feed_from(document, url)
   end
 end
 
+get '/' do
+  send_file File.expand_path('index.html', settings.public_folder)
+end
+
 get '/feed' do
-  content_type :atom
+  content_type :atom, charset: 'utf-8'
 
   uri = URI.parse(params[:url])
   query = URI.decode_www_form(uri.query)
