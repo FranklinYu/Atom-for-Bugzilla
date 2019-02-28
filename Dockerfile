@@ -1,6 +1,6 @@
-FROM alpine
+FROM alpine:3.9
 
-RUN apk add ruby ruby-etc ruby-json zlib
+RUN apk add ruby ruby-etc ruby-json libressl2.7-libssl zlib
 ARG app_path=/srv
 WORKDIR $app_path
 
