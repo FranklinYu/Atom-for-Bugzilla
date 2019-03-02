@@ -13,3 +13,4 @@ RUN apk add --virtual .build ruby-bundler ruby-dev build-base libressl-dev zlib-
 
 COPY . .
 CMD [ "puma" ]
+EXPOSE 9292
