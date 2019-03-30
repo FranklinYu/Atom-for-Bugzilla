@@ -5,5 +5,17 @@
 }
 
 #url {
-	width: 80ex;
+	width: 80%;
+}
+
+body {
+	max-width: 100ex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20ex;
+	background-color: #f2f1ea;
+}
+
+#main {
+	margin: 0 5ex;
 }
