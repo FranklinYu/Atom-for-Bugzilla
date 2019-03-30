@@ -19,3 +19,8 @@ body {
 #main {
 	margin: 0 5ex;
 }
+
+.logo {
+	width: 20ex;
+	margin: 6ex 0;
+}
