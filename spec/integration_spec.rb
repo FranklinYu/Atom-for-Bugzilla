@@ -4,7 +4,6 @@ require 'rss'
 
 require 'rack/test'
 require 'rspec'
-require 'pry-byebug'
 
 ENV['RACK_ENV'] = 'test'
 
