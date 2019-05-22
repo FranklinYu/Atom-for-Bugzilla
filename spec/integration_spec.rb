@@ -2,23 +2,9 @@
 
 require 'rss'
 
-require 'rack/test'
-require 'rspec'
-
-ENV['RACK_ENV'] = 'test'
-
 require_relative '../app'
 
-module RSpecMixin
-  include Rack::Test::Methods
-  def app
-    Sinatra::Application
-  end
-end
-
-RSpec.configure { |c| c.include RSpecMixin }
-
-describe 'The application' do
+RSpec.describe 'The application' do
   it 'works' do
     get '/feed', url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=256718'
     expect(last_response).to be_ok
