@@ -35,7 +35,7 @@ jobs:
             bundle exec rspec \
               --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
-              --format progress \
+              --format documentation \
               $TEST_FILES
 
       - store_test_results:
