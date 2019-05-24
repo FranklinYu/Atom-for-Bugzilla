@@ -43,6 +43,7 @@ class BadURL < StandardError
 end
 
 error BadURL do
+  content_type 'text/plain'
   halt 400, 'The URL doesn’t seem to be a Bugzilla bug URL.'
 end
 
