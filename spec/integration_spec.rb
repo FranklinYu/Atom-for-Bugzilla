@@ -19,4 +19,16 @@ RSpec.describe 'The application' do
       expect(rss.title.content).to eq('Implement Atom feeds for bugs')
     end
   end
+
+  {
+    'unknown domain' => 'http://invalid.example.com/show_bug.cgi?id=256718',
+    'non-bug URL' => 'https://bugzilla.mozilla.org',
+    'URL without HTTP OK response' => 'https://www.example.com/show_bug.cgi?id=256718',
+    'non-Bugzilla response' => 'https://www.example.com/index.html?id=256718'
+  }.each do |name, url|
+    it "returns Bad Request for #{name}" do
+      get '/feed', url: url
+      expect(last_response).to be_bad_request
+    end
+  end
 end

@@ -2,6 +2,7 @@
 
 require 'open-uri'
 require 'rss'
+require 'socket'
 
 require 'nokogiri'
 require 'sinatra'
@@ -38,14 +39,28 @@ get '/' do
   send_file File.expand_path('index.html', settings.public_folder)
 end
 
+class BadURL < StandardError
+end
+
+error BadURL do
+  halt 400, 'The URL doesn’t seem to be a Bugzilla bug URL.'
+end
+
 get '/feed' do
   content_type :atom, charset: 'utf-8'
 
   uri = URI.parse(params[:url])
+  raise BadURL if uri.query.nil?
   query = URI.decode_www_form(uri.query)
   query << [:ctype, :xml]
   uri.query = URI.encode_www_form(query)
-  document = open(uri) { |f| Nokogiri::XML(f) }
+  document = nil
+  begin
+    document = open(uri) { |f| Nokogiri::XML(f) }
+  rescue SocketError, OpenURI::HTTPError
+    raise BadURL
+  end
+  raise BadURL unless document.errors.empty?
 
   atom_feed_from(document, params[:url]).to_s
 end
