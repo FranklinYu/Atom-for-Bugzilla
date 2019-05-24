@@ -42,7 +42,7 @@ end
 class BadURL < StandardError
 end
 
-error BadURL do
+def reject_request
   content_type 'text/plain'
   halt 400, 'The URL doesn’t seem to be a Bugzilla bug URL.'
 end
@@ -51,7 +51,7 @@ get '/feed' do
   content_type :atom, charset: 'utf-8'
 
   uri = URI.parse(params[:url])
-  raise BadURL if uri.query.nil?
+  reject_request if uri.query.nil?
   query = URI.decode_www_form(uri.query)
   query << [:ctype, :xml]
   uri.query = URI.encode_www_form(query)
@@ -59,9 +59,9 @@ get '/feed' do
   begin
     document = open(uri) { |f| Nokogiri::XML(f) }
   rescue SocketError, OpenURI::HTTPError
-    raise BadURL
+    reject_request
   end
-  raise BadURL unless document.errors.empty?
+  reject_request unless document.errors.empty?
 
   atom_feed_from(document, params[:url]).to_s
 end
