@@ -2,4 +2,5 @@
 .git/
 .dockerignore
 Dockerfile
+Guardfile
 *.markdown
