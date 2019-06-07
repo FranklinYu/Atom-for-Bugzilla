@@ -7,6 +7,14 @@ require 'socket'
 require 'nokogiri'
 require 'sinatra'
 
+def get_name(user)
+  if user[:name].nil? || user[:name].strip.empty?
+    user.content
+  else
+    user[:name]
+  end
+end
+
 # @param document [Nokogiri::XML::Document]
 # @param url [String]
 def atom_feed_from(document, url)
@@ -14,6 +22,7 @@ def atom_feed_from(document, url)
     maker.channel.updated = Time.parse(document.at_xpath('bugzilla/bug/delta_ts').content)
     maker.channel.title = document.at_xpath('bugzilla/bug/short_desc').content
     maker.channel.id = url
+    maker.channel.author = get_name(document.at_xpath('bugzilla/bug/reporter'))
     maker.channel.links.new_link do |l|
       l.href = url
       l.type = 'text/html'
@@ -26,7 +35,7 @@ def atom_feed_from(document, url)
 
         item.title = "comment ##{id}"
         item.id = "#{url}##{id}"
-        item.author = desc.at_xpath('who')[:name]
+        item.author = get_name(desc.at_xpath('who'))
         item.updated = Time.parse(desc.at_xpath('bug_when').content)
         item.content.content = desc.at_xpath('thetext').content
         item.content.type = :text
