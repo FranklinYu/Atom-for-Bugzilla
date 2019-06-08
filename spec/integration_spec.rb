@@ -20,6 +20,11 @@ RSpec.describe 'The application' do
     end
   end
 
+  it 'uses username when display name is not available' do
+    get '/feed', url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=1430473'
+    expect(last_response).to be_ok
+  end
+
   {
     'unknown domain' => 'http://invalid.example.com/show_bug.cgi?id=256718',
     'non-bug URL' => 'https://bugzilla.mozilla.org',
