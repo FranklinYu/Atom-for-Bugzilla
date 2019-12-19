@@ -42,7 +42,7 @@ GEM
       method_source (~> 0.9.0)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.7)
+    rack (2.0.8)
     rack-protection (2.0.7)
       rack
     rack-test (1.1.0)
@@ -72,7 +72,7 @@ GEM
     spoon (0.0.6)
       ffi
     thor (0.20.3)
-    tilt (2.0.9)
+    tilt (2.0.10)
 
 PLATFORMS
   ruby
@@ -84,9 +84,9 @@ DEPENDENCIES
   nokogiri (~> 1.10)
   pry (~> 0.12.2)
   puma
-  rack-test (~> 1.1)
+  rack-test (~> 1.1, >= 1.1.0)
   rspec (~> 3.8)
-  sinatra (~> 2.0)
+  sinatra (~> 2.0, >= 2.0.7)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
