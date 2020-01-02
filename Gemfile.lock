@@ -44,7 +44,7 @@ GEM
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
-    rack-protection (2.0.8)
+    rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -66,10 +66,10 @@ GEM
     rspec-support (3.9.0)
     ruby2_keywords (0.0.1)
     shellany (0.0.1)
-    sinatra (2.0.8)
+    sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.8)
+      rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
     spoon (0.0.6)
       ffi
