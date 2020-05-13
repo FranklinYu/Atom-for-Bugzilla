@@ -29,7 +29,7 @@ GEM
     lumberjack (1.2.4)
     method_source (0.9.2)
     mini_portile2 (2.4.0)
-    mustermann (1.1.0)
+    mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nenv (0.3.0)
     nio4r (2.5.2)
@@ -43,7 +43,7 @@ GEM
       method_source (~> 0.9.0)
     puma (4.3.3)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
@@ -64,7 +64,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
-    ruby2_keywords (0.0.1)
+    ruby2_keywords (0.0.2)
     shellany (0.0.1)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
@@ -86,9 +86,9 @@ DEPENDENCIES
   nokogiri (~> 1.10)
   pry (~> 0.12.2)
   puma
-  rack-test (~> 1.1)
+  rack-test (~> 1.1, >= 1.1.0)
   rspec (~> 3.8)
-  sinatra (~> 2.0)
+  sinatra (~> 2.0, >= 2.0.8.1)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
