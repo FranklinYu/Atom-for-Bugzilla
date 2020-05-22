@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem 'nokogiri', '~> 1.10'
 gem 'pry', '~> 0.12.2', group: [:development, :test]
-gem 'puma', group: :production
+gem 'puma', '>= 4.3.5', group: :production
 gem 'sinatra', '~> 2.0'
 
 group :development do
