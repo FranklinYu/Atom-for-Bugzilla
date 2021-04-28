@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+  open-pull-requests-limit: 10
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: nokogiri
+    versions:
+    - 1.11.2
+  - dependency-name: puma
+    versions:
+    - 5.2.0
+    - 5.2.1
