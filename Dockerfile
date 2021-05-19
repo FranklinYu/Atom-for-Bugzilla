@@ -1,6 +1,6 @@
-FROM alpine:3.9
+FROM alpine:3.13
 
-RUN apk add ruby ruby-etc ruby-json libressl2.7-libssl zlib
+RUN apk add ruby ruby-etc ruby-json libressl3.1-libssl zlib
 ARG app_path=/srv
 ENV RACK_ENV production
 WORKDIR $app_path
