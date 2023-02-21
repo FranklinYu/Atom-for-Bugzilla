@@ -66,7 +66,7 @@ get '/feed' do
   uri.query = URI.encode_www_form(query)
   document = nil
   begin
-    document = open(uri) { |f| Nokogiri::XML(f) }
+    document = uri.open { |f| Nokogiri::XML(f) }
   rescue SocketError, OpenURI::HTTPError
     reject_request
   end
